@@ -1,24 +1,27 @@
-# README
+# Overview
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Found here is the backend repository for Project MESA, a Moving Efficiency Sorting Assistant. Inventory software which allows users to keep track of all boxed household goods throughout all moves undertaken.
 
-Things you may want to cover:
+## Requirements:
 
-* Ruby version
+* The code should be written in ES6 as much as possible
 
-* System dependencies
+* Use the create-react-app generator to start your project.
 
-* Configuration
+* Your app should have one HTML page to render your react-redux application
 
-* Database creation
+* There should be 5 stateless components
 
-* Database initialization
+* There should be 3 routes
 
-* How to run the test suite
+* The Application must make use of react-router and proper RESTful routing
 
-* Services (job queues, cache servers, search engines, etc.)
+* Use Redux middleware to respond to and modify state change
 
-* Deployment instructions
+* Make use of async actions and redux-thunk middleware to send data to and receive data from a server
 
-* ...
+* Your Rails API should handle the data persistence with a database. You should be using fetch() within your actions to GET and POST data from your API - do not use jQuery methods.
+
+* Your client-side application should handle the display of data with minimal data manipulation
+
+* Your application should have some minimal styling: feel free to stick to a framework (like react-bootstrap), but if you want to write (additional) CSS yourself, go for it!
