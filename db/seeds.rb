@@ -5,7 +5,7 @@ Move.delete_all
 Box.delete_all
 Item.delete_all
 
-User.create(name: "Ali")
+User.create(name: "Jimmy", username: "Jimmy Millard", password: "admin")
 
 Move.create(name: "Moving into new house", date: Date.new(2021, 1, 15), user_id: 1)
 Move.create(name: "Moving to Eureka", date: Date.new(2021, 1, 17), user_id: 1)
