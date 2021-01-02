@@ -7,8 +7,8 @@ Item.delete_all
 
 User.create(name: "Ali")
 
-Move.create(name: "Moving into new house", date: Date.new(2021, 1, 15), user_id: 1, icon: "https://static.thenounproject.com/png/5701-200.png")
-Move.create(name: "Moving to Eureka", date: Date.new(2021, 1, 17), user_id: 1, icon: "https://image.flaticon.com/icons/svg/53/53170.svg")
+Move.create(name: "Moving into new house", date: Date.new(2021, 1, 15), user_id: 1)
+Move.create(name: "Moving to Eureka", date: Date.new(2021, 1, 17), user_id: 1)
 
 # Move 1
 Box.create(name: "Bedding", category: "Bedroom", move_id: 1)
