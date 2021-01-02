@@ -69,6 +69,6 @@ class MovesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def move_params
-      params.require(:move).permit(:name, :date, :user_id, :icon)
+      params.require(:move).permit(:name, :date, :user_id)
     end
 end
