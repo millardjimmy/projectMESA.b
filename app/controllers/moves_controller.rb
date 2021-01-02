@@ -4,7 +4,10 @@ class MovesController < ApplicationController
   # GET /moves
   # GET /moves.json
   def index
-    @moves = Move.all
+    #@moves = Move.all
+    @user = User.find(params[:user_id])
+    @moves = @user.moves
+    render json: @moves
   end
 
   # GET /moves/1
