@@ -1,74 +1,53 @@
 class BoxesController < ApplicationController
-  before_action :set_box, only: [:show, :edit, :update, :destroy]
+  before_action :find_box, only: [:update, :show]
 
-  # GET /boxes
-  # GET /boxes.json
   def index
-    @boxes = Box.all
+    @move = Move.find(params[:move_id])
+    @boxes = @move.boxes
+    # @boxes = Box.all
+    render json: @boxes
   end
 
-  # GET /boxes/1
-  # GET /boxes/1.json
   def show
-  end
+   # @box = Box.find(params[:id])
+   render json: @box, status: 200
+ end
 
-  # GET /boxes/new
-  def new
-    @box = Box.new
-  end
-
-  # GET /boxes/1/edit
-  def edit
-  end
-
-  # POST /boxes
-  # POST /boxes.json
-  def create
+   def create
     @box = Box.new(box_params)
-
-    respond_to do |format|
-      if @box.save
-        format.html { redirect_to @box, notice: 'Box was successfully created.' }
-        format.json { render :show, status: :created, location: @box }
-      else
-        format.html { render :new }
-        format.json { render json: @box.errors, status: :unprocessable_entity }
-      end
+    # byebug
+    if @box.valid?
+      @box.save
+      render json: @box, status: :accepted
+    else
+      render json: { errors: @box.errors.full_messages }, status: :unprocessible_entity
     end
   end
 
-  # PATCH/PUT /boxes/1
-  # PATCH/PUT /boxes/1.json
+
   def update
-    respond_to do |format|
-      if @box.update(box_params)
-        format.html { redirect_to @box, notice: 'Box was successfully updated.' }
-        format.json { render :show, status: :ok, location: @box }
-      else
-        format.html { render :edit }
-        format.json { render json: @box.errors, status: :unprocessable_entity }
-      end
+    @box.update(box_params)
+    if @box.save
+      render json: @box, status: :accepted
+    else
+      render json: { errors: @box.errors.full_messages }, status: :unprocessible_entity
     end
   end
 
-  # DELETE /boxes/1
-  # DELETE /boxes/1.json
   def destroy
+    @box = Box.find(params[:id])
     @box.destroy
-    respond_to do |format|
-      format.html { redirect_to boxes_url, notice: 'Box was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    render json: @boxes
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_box
-      @box = Box.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def box_params
-      params.fetch(:box, {})
-    end
+  def box_params
+    params.permit(:name, :category, :move_id)
+  end
+
+  def find_box
+    @box = Box.find(params[:id])
+  end
+
 end
